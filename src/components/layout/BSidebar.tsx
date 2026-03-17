@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { BEndPage } from '../../types';
-import { LayoutDashboard, BookOpen, Bot, Settings, FileText, LogOut } from 'lucide-react';
+import { FileText, LogOut } from 'lucide-react';
 
 interface Props {
   currentPage: BEndPage;
@@ -10,10 +10,6 @@ interface Props {
 
 export default function BSidebar({ currentPage, onNavigate, onSwitchMode }: Props) {
   const navItems: { id: BEndPage; label: string; icon: ReactNode }[] = [
-    { id: 'dashboard', label: '仪表盘', icon: <LayoutDashboard className="w-5 h-5 mr-3" /> },
-    { id: 'knowledge', label: '企业知识库', icon: <BookOpen className="w-5 h-5 mr-3" /> },
-    { id: 'ai_gen', label: 'AI内容生成', icon: <Bot className="w-5 h-5 mr-3" /> },
-    { id: 'automation', label: '自动化策略', icon: <Settings className="w-5 h-5 mr-3" /> },
     { id: 'cms', label: '基础内容管理', icon: <FileText className="w-5 h-5 mr-3" /> },
   ];
 
