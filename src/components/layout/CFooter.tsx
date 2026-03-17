@@ -35,7 +35,6 @@ export default function CFooter() {
             <ul className="space-y-3">
               <li><a href="#" className="text-sm hover:text-rose-400 transition-colors">关于我们</a></li>
               <li><a href="#" className="text-sm hover:text-rose-400 transition-colors">服务体系</a></li>
-              <li><a href="#" className="text-sm hover:text-rose-400 transition-colors">专家团队</a></li>
               <li><a href="#" className="text-sm hover:text-rose-400 transition-colors">加入我们</a></li>
             </ul>
           </div>
