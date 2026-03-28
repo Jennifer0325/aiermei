@@ -1,76 +1,93 @@
-import React from 'react';
+import { Heart, Activity, Sparkles, Star } from 'lucide-react';
+import { CEndPage } from '../../types';
 
-export default function Meals() {
+interface Props {
+  onNavigate: (page: CEndPage) => void;
+}
+
+export default function Meals({ onNavigate }: Props) {
+  const stages = [
+    { name: '第一阶段：排', desc: '代谢排毒，温补脾胃', tags: ['猪肝', '红豆', '生化汤'] },
+    { name: '第二阶段：调', desc: '调理气血，收缩子宫', tags: ['猪腰', '杜仲', '补血汤'] },
+    { name: '第三阶段：补', desc: '滋补进补，增强体质', tags: ['鸡汤', '鱼汤', '滋补汤'] },
+    { name: '第四阶段：塑', desc: '塑身养颜，恢复体能', tags: ['燕窝', '花胶', '塑身汤'] },
+  ];
+
   return (
-    <div className="bg-white min-h-screen">
-      {/* Banner Section */}
-      <section className="relative h-[400px] bg-slate-200 flex items-center justify-center border-b border-slate-300">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-slate-400 mb-4">[月子膳食 Banner 图]</h1>
-          <p className="text-slate-500">建议尺寸: 1920x400px</p>
-        </div>
+    <div className="space-y-12 pb-10">
+      {/* Header */}
+      <section className="px-6 pt-6 space-y-2">
+        <h2 className="text-3xl font-bold text-slate-900 serif">月子膳食</h2>
+        <p className="text-xs text-slate-400 font-medium tracking-widest uppercase">Postpartum Nutrition</p>
       </section>
 
-      {/* Concept Section */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">[膳食理念 标题]</h2>
-          <div className="w-24 h-1 bg-rose-200 mx-auto"></div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <div className="h-6 bg-slate-200 rounded w-1/2 mb-4"></div>
-            <div className="h-4 bg-slate-100 rounded w-full"></div>
-            <div className="h-4 bg-slate-100 rounded w-full"></div>
-            <div className="h-4 bg-slate-100 rounded w-5/6"></div>
-            <div className="h-4 bg-slate-100 rounded w-full"></div>
-            <div className="h-4 bg-slate-100 rounded w-2/3"></div>
-            <p className="text-sm text-slate-400 mt-4">[膳食理念详细文案占位：清、调、补、养等阶段性理念]</p>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-             <div className="aspect-square bg-slate-100 rounded-lg flex items-center justify-center border border-slate-200">
-                <span className="text-slate-400 text-sm">[理念配图1]</span>
-             </div>
-             <div className="aspect-square bg-slate-100 rounded-lg flex items-center justify-center border border-slate-200 mt-8">
-                <span className="text-slate-400 text-sm">[理念配图2]</span>
-             </div>
+      {/* Hero Image */}
+      <section className="px-6">
+        <div className="relative rounded-[40px] overflow-hidden aspect-[16/10] shadow-2xl">
+          <img 
+            src="https://picsum.photos/seed/meals_hero/1200/800" 
+            alt="Meals Hero" 
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-8 flex flex-col justify-end">
+            <h3 className="text-white font-bold text-2xl serif">科学膳食，匠心滋养</h3>
+            <p className="text-white/70 text-xs mt-2">由资深营养师与星级大厨联袂打造</p>
           </div>
         </div>
       </section>
 
-      {/* Stages Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">[阶段食谱 标题]</h2>
-            <div className="w-24 h-1 bg-rose-200 mx-auto"></div>
-            <p className="text-slate-500 mt-4">[阶段食谱副标题/简介]</p>
-          </div>
+      {/* Concept */}
+      <section className="px-6 space-y-8">
+        <div className="flex justify-between items-end">
+          <h3 className="text-2xl font-bold text-slate-900 serif">膳食理念</h3>
+          <span className="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Concept</span>
+        </div>
 
-          {/* Tabs Placeholder */}
-          <div className="flex justify-center space-x-4 mb-12">
-            {['第一阶段：清', '第二阶段：调', '第三阶段：补', '第四阶段：养'].map((tab, index) => (
-              <div key={index} className={`px-6 py-3 rounded-full text-sm font-medium border ${index === 0 ? 'bg-rose-100 text-rose-700 border-rose-200' : 'bg-white text-slate-600 border-slate-200'}`}>
-                {tab}
+        <div className="grid grid-cols-2 gap-4">
+          {[
+            { title: '阶段调理', icon: <Activity className="w-5 h-5" />, desc: '排、调、补、塑' },
+            { title: '食材严选', icon: <Heart className="w-5 h-5" />, desc: '绿色有机直采' },
+            { title: '匠心烹饪', icon: <Sparkles className="w-5 h-5" />, desc: '低盐低油低脂' },
+            { title: '个性定制', icon: <Star className="w-5 h-5" />, desc: '专属营养方案' },
+          ].map((item, i) => (
+            <div key={i} className="bg-white p-6 rounded-3xl border border-slate-50 shadow-sm space-y-3">
+              <div className="w-10 h-10 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-600">
+                {item.icon}
               </div>
-            ))}
-          </div>
+              <div className="space-y-1">
+                <h4 className="font-bold text-slate-900 text-sm">{item.title}</h4>
+                <p className="text-[10px] text-slate-400 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="bg-white rounded-xl shadow-sm overflow-hidden border border-slate-200">
-                <div className="aspect-[4/3] bg-slate-200 flex items-center justify-center">
-                  <span className="text-slate-400 text-sm">[菜品图片]</span>
-                </div>
-                <div className="p-6 text-center">
-                  <div className="h-6 bg-slate-200 rounded w-2/3 mx-auto mb-2"></div>
-                  <div className="h-4 bg-slate-100 rounded w-full mx-auto mb-4"></div>
-                  <p className="text-xs text-slate-400 mt-4">[菜品名称、功效简介占位]</p>
+      {/* Stages */}
+      <section className="px-6 space-y-8">
+        <div className="flex justify-between items-end">
+          <h3 className="text-2xl font-bold text-slate-900 serif">阶段食谱</h3>
+          <span className="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Stages</span>
+        </div>
+
+        <div className="space-y-6">
+          {stages.map((stage, idx) => (
+            <div key={idx} className="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm flex items-center space-x-6">
+              <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center text-white font-black text-xl serif shrink-0">
+                0{idx + 1}
+              </div>
+              <div className="space-y-2">
+                <h4 className="font-bold text-slate-900 text-lg serif">{stage.name}</h4>
+                <p className="text-xs text-slate-500">{stage.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {stage.tags.map((tag, tIdx) => (
+                    <span key={tIdx} className="text-[10px] text-rose-400 font-bold tracking-wider">#{tag}</span>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>
